@@ -1,10 +1,18 @@
 #include "entity.h"
+#include <cmath>
 
 Entity::Entity(Point _pos)
 {
     pos = _pos;
     fd = 0.001;
     vel = {0, 0, 0};
+}
+
+double Entity::getDistanceTo(const Entity &other)
+{
+  return sqrt( (other.pos.x - pos.x) * (other.pos.x - pos.x) +
+               (other.pos.y - pos.y) * (other.pos.y - pos.y) +
+               (other.pos.z - pos.z) * (other.pos.z - pos.z));
 }
 
 Point Entity::getPos()

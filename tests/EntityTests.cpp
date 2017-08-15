@@ -81,3 +81,17 @@ TEST(Entity, update_checkAllAxes)
 	ASSERT_NEAR(1, ent.getPos().y, 0.001);
 	ASSERT_NEAR(1, ent.getPos().z, 0.001);
 }
+
+TEST(Entity, getDistanceBetweenEntities1D)
+{
+	Entity ent1({0, 0, 0});
+	Entity ent2({1, 0, 0});
+	ASSERT_EQ(1, ent1.getDistanceTo(ent2));
+}
+
+TEST(Entity, getDistanceBetweenEntities3D)
+{
+	Entity ent1({0, 0, 0});
+	Entity ent2({1, 1, 1});
+	ASSERT_NEAR(1.73, ent1.getDistanceTo(ent2), 0.01);
+}

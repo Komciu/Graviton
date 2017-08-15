@@ -13,6 +13,7 @@ public:
     Point getAcceleration();
     void setFrameDuration(double _time);
     void update();
+    double getDistanceTo(const Entity &other);
 
 private:
     Point pos;
