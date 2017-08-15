@@ -1,4 +1,3 @@
-#include <iostream>
 #include "gtest/gtest.h"
 #include "entity.h"
 
@@ -29,7 +28,7 @@ TEST(Entity, getVelocity)
 	ent.setVelocity({1, 2, 3});
 	ASSERT_EQ(1, ent.getVelocity().x);
 	ASSERT_EQ(2, ent.getVelocity().y);
-	ASSERT_EQ(3, ent.getVelocity().z);	
+	ASSERT_EQ(3, ent.getVelocity().z);
 }
 
 TEST(Entity, getAcceleration)
@@ -38,7 +37,7 @@ TEST(Entity, getAcceleration)
 	ent.setAcceleration({1, 2, 3});
 	ASSERT_EQ(1, ent.getAcceleration().x);
 	ASSERT_EQ(2, ent.getAcceleration().y);
-	ASSERT_EQ(3, ent.getAcceleration().z);	
+	ASSERT_EQ(3, ent.getAcceleration().z);
 }
 
 TEST(Entity, updateWithNoAcceleration)
@@ -81,10 +80,4 @@ TEST(Entity, update_checkAllAxes)
 	ASSERT_NEAR(1, ent.getPos().x, 0.001);
 	ASSERT_NEAR(1, ent.getPos().y, 0.001);
 	ASSERT_NEAR(1, ent.getPos().z, 0.001);
-}
-
-int main(int argc, char **argv)
-{
-	testing::InitGoogleTest(&argc, argv);
-	return RUN_ALL_TESTS();
 }
