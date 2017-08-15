@@ -5,3 +5,4 @@ cmake ..
 make
 cd ../bin
 ./EntityTests
+rm ./EntityTests
