@@ -72,6 +72,17 @@ TEST(Entity, updateLoop)
 	ASSERT_NEAR(0.01, ent.getPos().x, 0.001);
 }
 
+TEST(Entity, update_checkAllAxes)
+{
+	Entity ent;
+	ent.setVelocity({1, 1, 1});
+	ent.setFrameDuration(1);
+	ent.update();
+	ASSERT_NEAR(1, ent.getPos().x, 0.001);
+	ASSERT_NEAR(1, ent.getPos().y, 0.001);
+	ASSERT_NEAR(1, ent.getPos().z, 0.001);
+}
+
 int main(int argc, char **argv)
 {
 	testing::InitGoogleTest(&argc, argv);

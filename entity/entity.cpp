@@ -39,6 +39,13 @@ void Entity::setFrameDuration(double _time)
 
 void Entity::update()
 {
-    pos.x = pos.x + vel.x * fd + (acc.x * fd * fd) / 2;
-    vel.x = vel.x + acc.x * fd;
+    calcNew(pos.x, vel.x, acc.x);
+    calcNew(pos.y, vel.y, acc.y);
+    calcNew(pos.z, vel.z, acc.z);
+}
+
+void Entity::calcNew(double &p, double &v, double &a)
+{
+    p = p + v * fd + (a * fd * fd) / 2;
+    v = v + a * fd;
 }

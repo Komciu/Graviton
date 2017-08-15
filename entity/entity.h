@@ -17,4 +17,6 @@ private:
     Point vel;
     Point acc;
     double fd;
+
+    void calcNew(double &p, double &v, double &a);
 };
