@@ -15,6 +15,13 @@ TEST(Entity, getPos)
 	ASSERT_EQ(0, ent.getPos().z);
 }
 
+TEST(Entity, getPosChangedInitialPos)
+{
+	Entity ent({1, 2, 3});
+	ASSERT_EQ(1, ent.getPos().x);
+	ASSERT_EQ(2, ent.getPos().y);
+	ASSERT_EQ(3, ent.getPos().z);
+}
 int main(int argc, char **argv)
 {
 	testing::InitGoogleTest(&argc, argv);
