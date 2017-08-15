@@ -1,0 +1,6 @@
+add_executable(EntityTests EntityTests.cpp)
+if(UNIX)
+	target_link_libraries(EntityTests EntityLib gtest gtest_main pthread)
+else(WIN32)
+	target_link_libraries(EntityTests EntityLib gtest gtest_main)
+endif()
