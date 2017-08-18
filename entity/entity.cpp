@@ -1,10 +1,11 @@
 #include "entity.h"
 #include <cmath>
 
-Entity::Entity(Point _pos)
+Entity::Entity(Vector3D _pos)
 {
     pos = _pos;
     fd = 0.001;
+    mass = 1;
     vel = {0, 0, 0};
 }
 
@@ -15,27 +16,27 @@ double Entity::getDistanceTo(const Entity &other)
                (other.pos.z - pos.z) * (other.pos.z - pos.z));
 }
 
-Point Entity::getPos()
+Vector3D Entity::getPos()
 {
     return pos;
 }
 
-void Entity::setVelocity(Point _vel)
+void Entity::setVelocity(Vector3D _vel)
 {
     vel = _vel;
 }
 
-Point Entity::getVelocity()
+Vector3D Entity::getVelocity()
 {
     return vel;
 }
 
-void Entity::setAcceleration(Point _acc)
+void Entity::setAcceleration(Vector3D _acc)
 {
     acc = _acc;
 }
 
-Point Entity::getAcceleration()
+Vector3D Entity::getAcceleration()
 {
     return acc;
 }
@@ -56,4 +57,18 @@ void Entity::calcNew(double &p, double &v, double &a)
 {
     p = p + v * fd + (a * fd * fd) / 2;
     v = v + a * fd;
+}
+
+double Entity::getMass()
+{
+  return mass;
+}
+
+Vector3D Entity::getVectorTowardsTarget(const Entity &other)
+{
+  Vector3D direction;
+  direction.x = other.pos.x - pos.x;
+  direction.y = other.pos.y - pos.y;
+  direction.z = other.pos.z - pos.z;
+  return direction;
 }

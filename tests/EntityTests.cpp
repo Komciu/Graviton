@@ -89,9 +89,37 @@ TEST(Entity, getDistanceBetweenEntities1D)
 	ASSERT_EQ(1, ent1.getDistanceTo(ent2));
 }
 
+TEST(Entity, getDistanceBetweenEntities2D)
+{
+	Entity ent1({0, 0, 0});
+	Entity ent2({1, 1, 0});
+ASSERT_NEAR(1.42, ent1.getDistanceTo(ent2), 0.01);
+}
+
 TEST(Entity, getDistanceBetweenEntities3D)
 {
 	Entity ent1({0, 0, 0});
 	Entity ent2({1, 1, 1});
 	ASSERT_NEAR(1.73, ent1.getDistanceTo(ent2), 0.01);
 }
+
+TEST(Entity, getVectorTowardsTarget)
+{
+	Entity ent1({0, 0, 0});
+	Entity ent2({1, 1, 0});
+	ASSERT_TRUE(ent1.getVectorTowardsTarget(ent2) == Vector3D(1, 1, 0));
+	ASSERT_TRUE(ent2.getVectorTowardsTarget(ent1) == Vector3D(-1, -1, 0));
+}
+
+/*
+TEST(Entity, calcForceToAnotherEntity)
+{
+	Entity ent1({0, 0, 0});
+	Entity ent2({1, 1, 0});
+	double G = 9.8;
+	double r = ent1.getDistanceTo(ent2);
+	double force12 = G * ent1.getMass() * ent2.getMass() / r*r;
+	ent1.addForce()
+	ASSERT_NEAR(ent1.addForce)
+}
+*/

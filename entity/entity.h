@@ -5,21 +5,24 @@
 class Entity
 {
 public:
-    Entity(Point _pos = {0, 0, 0});
-    Point getPos();
-    void setVelocity(Point _vel);
-    Point getVelocity();
-    void setAcceleration(Point _acc);
-    Point getAcceleration();
+    Entity(Vector3D _pos = {0, 0, 0});
+    Vector3D getPos();
+    void setVelocity(Vector3D _vel);
+    Vector3D getVelocity();
+    void setAcceleration(Vector3D _acc);
+    Vector3D getAcceleration();
     void setFrameDuration(double _time);
     void update();
     double getDistanceTo(const Entity &other);
+    double getMass();
+    Vector3D getVectorTowardsTarget(const Entity &other);
 
 private:
-    Point pos;
-    Point vel;
-    Point acc;
+    Vector3D pos;
+    Vector3D vel;
+    Vector3D acc;
     double fd;
+    double mass;
 
     void calcNew(double &p, double &v, double &a);
 };
