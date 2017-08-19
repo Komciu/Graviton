@@ -41,7 +41,7 @@ Vector3D Entity::getAcceleration()
     return acc;
 }
 
-void Entity::setFrameDuration(double _time)
+void Entity::setFrameDuration(double _time = 0.001)
 {
     fd = _time;
 }
@@ -64,7 +64,7 @@ double Entity::getMass()
   return mass;
 }
 
-Vector3D Entity::getVersorTowardsTarget(const Entity &other)
+Vector3D Entity::getVersorTowards(const Entity &other)
 {
   Vector3D direction;
   double distance = getDistanceTo(other);
@@ -72,4 +72,20 @@ Vector3D Entity::getVersorTowardsTarget(const Entity &other)
   direction.y = other.pos.y - pos.y;
   direction.z = other.pos.z - pos.z;
   return (direction/distance);
+}
+
+void Entity::addForce(const Vector3D &force)
+{
+  forces.push_back(force);
+  acc = getOutputForce();
+}
+
+Vector3D Entity::getOutputForce()
+{
+  Vector3D sum;
+  for(auto i = forces.begin(); i != forces.end(); i++)
+  {
+    sum = sum + (*i);
+  }
+  return sum;
 }

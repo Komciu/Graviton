@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.h"
+#include <vector>
 
 class Entity
 {
@@ -15,7 +16,9 @@ public:
     void update();
     double getDistanceTo(const Entity &other);
     double getMass();
-    Vector3D getVersorTowardsTarget(const Entity &other);
+    Vector3D getVersorTowards(const Entity &other);
+    void addForce(const Vector3D &force);
+    Vector3D getOutputForce();
 
 private:
     Vector3D pos;
@@ -23,6 +26,7 @@ private:
     Vector3D acc;
     double fd;
     double mass;
+    std::vector<Vector3D> forces;
 
     void calcNew(double &p, double &v, double &a);
 };
