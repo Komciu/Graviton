@@ -15,7 +15,7 @@ public:
     void update();
     double getDistanceTo(const Entity &other);
     double getMass();
-    Vector3D getVectorTowardsTarget(const Entity &other);
+    Vector3D getVersorTowardsTarget(const Entity &other);
 
 private:
     Vector3D pos;

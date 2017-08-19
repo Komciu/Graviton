@@ -64,11 +64,12 @@ double Entity::getMass()
   return mass;
 }
 
-Vector3D Entity::getVectorTowardsTarget(const Entity &other)
+Vector3D Entity::getVersorTowardsTarget(const Entity &other)
 {
   Vector3D direction;
+  double distance = getDistanceTo(other);
   direction.x = other.pos.x - pos.x;
   direction.y = other.pos.y - pos.y;
   direction.z = other.pos.z - pos.z;
-  return direction;
+  return (direction/distance);
 }

@@ -12,4 +12,12 @@ struct Vector3D
     {
       return (x == other.x && y == other.y && z == other.z);
     }
+    Vector3D operator/(double val)
+    {
+      Vector3D result;
+      result.x = x / val;
+      result.y = y / val;
+      result.z = z / val;
+      return result;
+    }
 };

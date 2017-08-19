@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "entity.h"
+#include <cmath>
 
 TEST(Entity, CreateEntity)
 {
@@ -103,12 +104,24 @@ TEST(Entity, getDistanceBetweenEntities3D)
 	ASSERT_NEAR(1.73, ent1.getDistanceTo(ent2), 0.01);
 }
 
-TEST(Entity, getVectorTowardsTarget)
+TEST(Entity, getVersorTowardsTarget)
 {
 	Entity ent1({0, 0, 0});
 	Entity ent2({1, 1, 0});
-	ASSERT_TRUE(ent1.getVectorTowardsTarget(ent2) == Vector3D(1, 1, 0));
-	ASSERT_TRUE(ent2.getVectorTowardsTarget(ent1) == Vector3D(-1, -1, 0));
+	Entity ent3({2, 1, 0});
+	Entity ent4({1, 1, 1});
+	ASSERT_NEAR(ent1.getVersorTowardsTarget(ent2).x, 0.707, 0.01);
+	ASSERT_NEAR(ent1.getVersorTowardsTarget(ent2).y, 0.707, 0.01);
+	ASSERT_NEAR(ent1.getVersorTowardsTarget(ent2).z, 0, 0.01);
+	ASSERT_NEAR(ent2.getVersorTowardsTarget(ent1).x, -0.707, 0.01);
+	ASSERT_NEAR(ent2.getVersorTowardsTarget(ent1).y, -0.707, 0.01);
+	ASSERT_NEAR(ent2.getVersorTowardsTarget(ent1).z, 0, 0.01);
+	ASSERT_NEAR(ent1.getVersorTowardsTarget(ent3).x, 2/sqrt(5), 0.01);
+	ASSERT_NEAR(ent1.getVersorTowardsTarget(ent3).y, 1/sqrt(5), 0.01);
+	ASSERT_NEAR(ent1.getVersorTowardsTarget(ent3).z, 0, 0.01);
+	ASSERT_NEAR(ent1.getVersorTowardsTarget(ent4).x, 1/sqrt(3), 0.01);
+	ASSERT_NEAR(ent1.getVersorTowardsTarget(ent4).y, 1/sqrt(3), 0.01);
+	ASSERT_NEAR(ent1.getVersorTowardsTarget(ent4).z, 1/sqrt(3), 0.01);
 }
 
 /*
